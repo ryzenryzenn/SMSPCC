@@ -13,7 +13,7 @@
     <link rel="apple-touch-icon" href="<?php echo base_url();?>public/app-assets/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url();?>public/app-assets/images/ico/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
-
+    l
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/app-assets/vendors/css/vendors.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/app-assets/vendors/css/tables/datatable/dataTables.bootstrap4.min.css">
@@ -38,6 +38,7 @@
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <!-- END: Custom CSS-->
 
 </head>
@@ -69,7 +70,7 @@
                     <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="user-nav d-sm-flex d-none"><span class="user-name font-weight-bolder">Admin</span><span class="user-status">Admin</span></div><span class="avatar"><img class="round" src="<?php echo base_url();?>public/app-assets/images/portrait/small/avatar-s-11.jpg" alt="avatar" height="40" width="40"><span class="avatar-status-online"></span></span>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user"><a class="dropdown-item" href="page-profile.html"><i class="mr-50" data-feather="user"></i> Profile</a><a class="dropdown-item" href="<?php echo site_url('My_controller/logout');?>"><i class="mr-50" data-feather="power"></i> Logout</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user"><a class="dropdown-item" href="#"><i class="mr-50" data-feather="user"></i> Profile</a><a class="dropdown-item" href="<?php echo site_url('My_controller/logout');?>"><i class="mr-50" data-feather="power"></i> Logout</a>
                     </div>
                 </li>
             </ul>
@@ -119,31 +120,13 @@
                 </li>
                 <li class=" nav-item"><a class="d-flex align-items-center" href=""><i data-feather="cloud"></i><span class="menu-title text-truncate" data-i18n="Email">Year List</span></a>
                 </li>
-                <li class=" nav-item"><a class="d-flex align-items-center" href="app-chat.html"><i data-feather="book"></i><span class="menu-title text-truncate" data-i18n="Chat">Subject List</span></a>
+                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="book"></i><span class="menu-title text-truncate" data-i18n="Chat">Subject List</span></a>
                 </li>
                 <li class=" nav-item"><a class="d-flex align-items-center" href="<?php echo base_url(); ?>My_controller/faculty"><i data-feather="users"></i><span class="menu-title text-truncate" data-i18n="Todo">Faculty List</span></a>
                 </li>
-                <li class=" nav-item"><a class="d-flex align-items-center" href="app-calendar.html"><i data-feather="calendar"></i><span class="menu-title text-truncate" data-i18n="Calendar">Schedule</span></a>
+                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="calendar"></i><span class="menu-title text-truncate" data-i18n="Calendar">Schedule</span></a>
                 </li>
-                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="user"></i><span class="menu-title text-truncate" data-i18n="User">User</span></a>
-                    <ul class="menu-content">
-                        <li><a class="d-flex align-items-center" href="app-user-list.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">List</span></a>
-                        </li>
-                        <li><a class="d-flex align-items-center" href="app-user-view.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="View">View</span></a>
-                        </li>
-                        <li><a class="d-flex align-items-center" href="app-user-edit.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Edit">Edit</span></a>
-                        </li>
-                    </ul>
-                </li>
-                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Pages">Pages</span></a>
-                    <ul class="menu-content">
-                        <li><a class="d-flex align-items-center" href="page-account-settings.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Account Settings">Account Settings</span></a>
-                        </li>
-                    </ul>
-                    <li class=" nav-item"><a class="d-flex align-items-center" href="table-bootstrap.html"><i data-feather="server"></i><span class="menu-title text-truncate" data-i18n="Table">Table</span></a>
-                    </li>
-                    <li class=" nav-item"><a class="d-flex align-items-center" href="table-datatable-basic.html"><i data-feather="grid"></i><span class="menu-title text-truncate" data-i18n="Datatable">Datatable</span></a>
-                    </li>
+                
             </ul>
         
         </div>
@@ -173,10 +156,10 @@
                 <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <table class="datatables-basic table">
+                                <table class="datatables-basic table" id="myTable">
                                     <thead>
                                         <tr>
-
+                                            <th style="display:none;">id</th>
                                             <th>Rank</th>
                                             <th>First Name</th>
                                             <th>Middle Name</th>
@@ -193,6 +176,7 @@
                                     <tbody>
                         <?php foreach($data->result() as $row){?>
                         <tr>
+                          <td style="display:none;"><?=$row->fac_id?></td>
                           <td><?=$row->rank?></td>
                           <td><?=$row->first_name?></td>
                           <td><?=$row->middle_name?></td>
@@ -205,19 +189,16 @@
                           <td><?=$row->status?></td>
                         
                           <td>
-                          <button class="btn btn-primary">
-                            <i data-feather="eye" class="mr-25"></i>
-                                <span>View</span>
-                          </button>
-                          <button class="btn btn-success editbtn" data-toggle="modal" data-target="#edit" >
-                            <i data-feather="edit" class="mr-25"></i>
-                                <span>Edit</span>
-                          </button>
-                          <a href="<?=base_url('My_controller/delete_faculty');?>?fac_id=<?=$row->fac_id?>" class="btn btn-md btn-danger">
-                          <i data-feather="trash-2" class="mr-25"></i>
-                          <span>Delete</span>
-                           </a>
-                     
+
+
+                      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Actions
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                           
+                                <a class="dropdown-item editbtn" href="<?=base_url('My_controller/edit_faculty');?>?fac_id=<?=$row->fac_id?>" data-toggle="modal" data-target="#edit">Edit</a>
+                                <a class="dropdown-item" href="<?=base_url('My_controller/delete_faculty');?>?fac_id=<?=$row->fac_id?>">Delete</a>
+                            </div>
                           </td>
                         
                       
@@ -275,7 +256,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label" for="basic-icon-default-post">Email</label>
-                                        <input type="email" id="email-id-vertical" class="form-control dt-email" name="email" placeholder="john.doe@example.com" aria-label="juan.delacruz@example.com"  required/>
+                                        <input type="email" id="email-id-vertical" class="form-control dt-email" name="email" placeholder="juan.delacruz@example.com" aria-label="juan.delacruz@example.com"  required/>
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label" for="basic-icon-default-post">Time Allocated</label>
@@ -305,15 +286,19 @@
                         </div>
                     </div>
                 </section>
-               <!-- Modal to add new record -->
+               <!-- Modal to edit new record -->
                <div class="modal modal-slide-in fade" id="edit">
                         <div class="modal-dialog sidebar-sm">
-                            <form class="add-new-record modal-content pt-0" method="POST" action="<?=base_url();?>My_controller/edit_faculty">
+                            <form class="add-new-record modal-content pt-0" method="POST" action="update">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
                                 <div class="modal-header mb-1">
                                     <h5 class="modal-title" id="exampleModalLabel">Edit faculty</h5>
                                 </div>
                                 <div class="modal-body flex-grow-1">
+                                <div class="form-group" style="display:none;">
+                                        <label class="form-label" for="basic-icon-default-post">ID</label>
+                                        <input type="text" class="form-control " id="id" placeholder="ID" aria-label="ID" name="fac_id" required/>
+                                    </div>
                                 <div class="form-group">
                                     
                                             <label for="Rank" class="form-label">Rank</label>
@@ -372,7 +357,7 @@
                                         </div>
                                     <div class="form-group">
                                         <label class="form-label" for="basic-icon-default-post">Contact</label>
-                                        <input type="number"  class="form-control" id="e_contact" name="contact" placeholder="Mobile" required >
+                                        <input type="number"  class="form-control" id="e_contact" name="ccontact" placeholder="Mobile" required >
                                     </div>
                                   
                                     <button type="submit" class="btn btn-primary data-submit mr-1">Submit</button>
@@ -419,6 +404,7 @@
     <script src="<?php echo base_url();?>public/app-assets/vendors/js/tables/datatable/buttons.print.min.js"></script>
     <script src="<?php echo base_url();?>public/app-assets/vendors/js/tables/datatable/dataTables.rowGroup.min.js"></script>
     <script src="<?php echo base_url();?>public/app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
@@ -449,21 +435,27 @@
     var data = $tr.children("td").map(function(){
     return $(this).text();
     }).get();
-    $('#ranky').val(data[0]);
-    $('#first').val(data[1]);
-    $('#e_middle_name').val(data[2]);
-    $('#e_last_name').val(data[3]);
-    $('#e_gender').val(data[4]);
-    $('#e_address').val(data[5]);
+    $('#id').val(data[0]);
+    $('#ranky').val(data[1]);
+    $('#first').val(data[2]);
+    $('#e_middle_name').val(data[3]);
+    $('#e_last_name').val(data[4]);
+    $('#e_gender').val(data[5]);
     $('#e_email').val(data[6]);
-    $('#e_contact').val(data[7]);
-    $('#e_time').val(data[8]);
-    $('#e_status').val(data[9]);
+    $('#e_address').val(data[7]);
+    $('#e_contact').val(data[8]);
+    $('#e_time').val(data[9]);
+    $('#e_status').val(data[10]);
    
   
     });
 
   });
+  
   </script>
-
+<script>
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
 </html>

@@ -53,6 +53,7 @@ $route['default_controller'] = 'My_controller/login';
 $route['register'] = 'My_controller/register';
 $route['dashboard']= 'My_controller/dashboard';
 $route['faculty']= 'My_controller/faculty';
+$route['update']='My_Controller/update';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['(:any)'] = 'My_controller/login/$1';

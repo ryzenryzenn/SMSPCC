@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
     <meta name="description" content="SMSPCC Dashboard"">
     <meta name="keywords" content="SMSPCC Dashboard">
-    <meta name="author" content="PIXINVENT">
+    <meta name="author" content="">
     <title>Dashboard</title>
     <link rel="apple-touch-icon" href="<?php echo base_url();?>public/app-assets/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url();?>public/app-assets/images/ico/favicon.ico">
@@ -72,9 +72,9 @@
                 </li>
                 <li class="nav-item dropdown dropdown-user">
                     <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <div class="user-nav d-sm-flex d-none"><span class="user-name font-weight-bolder">John Doe</span><span class="user-status">Admin</span></div><span class="avatar"><img class="round" src="<?php echo base_url();?>public/app-assets/images/portrait/small/avatar-s-11.jpg" alt="avatar" height="40" width="40"><span class="avatar-status-online"></span></span>
+                        <div class="user-nav d-sm-flex d-none"><span class="user-name font-weight-bolder">Admin</span><span class="user-status">Admin</span></div><span class="avatar"><img class="round" src="<?php echo base_url();?>public/app-assets/images/portrait/small/avatar-s-11.jpg" alt="avatar" height="40" width="40"><span class="avatar-status-online"></span></span>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user"><a class="dropdown-item" href="page-profile.html"><i class="mr-50" data-feather="user"></i> Profile</a><a class="dropdown-item" href="<?php echo site_url('My_controller/logout');?>"><i class="mr-50" data-feather="power"></i> Logout</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user"><a class="dropdown-item" href="#"><i class="mr-50" data-feather="user"></i> Profile</a><a class="dropdown-item" href="<?php echo site_url('My_controller/logout');?>"><i class="mr-50" data-feather="power"></i> Logout</a>
                     </div>
                 </li>
             </ul>
@@ -122,33 +122,15 @@
                 </li>
                 <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i data-feather="more-horizontal"></i>
                 </li>
-                <li class=" nav-item"><a class="d-flex align-items-center" href=""><i data-feather="cloud"></i><span class="menu-title text-truncate" data-i18n="Email">Year List</span></a>
+                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="cloud"></i><span class="menu-title text-truncate" data-i18n="Email">Year List</span></a>
                 </li>
-                <li class=" nav-item"><a class="d-flex align-items-center" href="app-chat.html"><i data-feather="book"></i><span class="menu-title text-truncate" data-i18n="Chat">Subject List</span></a>
+                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="book"></i><span class="menu-title text-truncate" data-i18n="Chat">Subject List</span></a>
                 </li>
                 <li class=" nav-item"><a class="d-flex align-items-center" href="<?php echo base_url(); ?>My_controller/faculty"><i data-feather="users"></i><span class="menu-title text-truncate" data-i18n="Todo">Faculty List</span></a>
                 </li>
-                <li class=" nav-item"><a class="d-flex align-items-center" href="app-calendar.html"><i data-feather="calendar"></i><span class="menu-title text-truncate" data-i18n="Calendar">Schedule</span></a>
+                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="calendar"></i><span class="menu-title text-truncate" data-i18n="Calendar">Schedule</span></a>
                 </li>
-                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="user"></i><span class="menu-title text-truncate" data-i18n="User">User</span></a>
-                    <ul class="menu-content">
-                        <li><a class="d-flex align-items-center" href="app-user-list.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">List</span></a>
-                        </li>
-                        <li><a class="d-flex align-items-center" href="app-user-view.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="View">View</span></a>
-                        </li>
-                        <li><a class="d-flex align-items-center" href="app-user-edit.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Edit">Edit</span></a>
-                        </li>
-                    </ul>
-                </li>
-                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Pages">Pages</span></a>
-                    <ul class="menu-content">
-                        <li><a class="d-flex align-items-center" href="page-account-settings.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Account Settings">Account Settings</span></a>
-                        </li>
-                    </ul>
-                    <li class=" nav-item"><a class="d-flex align-items-center" href="table-bootstrap.html"><i data-feather="server"></i><span class="menu-title text-truncate" data-i18n="Table">Table</span></a>
-                    </li>
-                    <li class=" nav-item"><a class="d-flex align-items-center" href="table-datatable-basic.html"><i data-feather="grid"></i><span class="menu-title text-truncate" data-i18n="Datatable">Datatable</span></a>
-                    </li>
+               
             </ul>
         
             
@@ -255,7 +237,7 @@
     <!-- BEGIN: Footer-->
     <footer class="footer footer-static footer-light">
         <p class="clearfix mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2022<a class="ml-25" href="" target="_blank">SMSPCC</a><span class="d-none d-sm-inline-block">, All rights Reserved</span></span>
-            <span class="float-md-right d-none d-md-block">Hand-crafted & Made with<i data-feather="heart"></i></span>
+            
         </p>
     </footer>
     <button class="btn btn-primary btn-icon scroll-top" type="button"><i data-feather="arrow-up"></i></button>
@@ -268,7 +250,7 @@
 
     <!-- BEGIN: Page Vendor JS-->
     <script src="<?php echo base_url();?>public/app-assets/vendors/js/charts/apexcharts.min.js"></script>
-    <script src="<?php echo base_url();?>public/app-assets/vendors/js/extensions/toastr.min.js"></script>
+    <!-- <script src="<?php echo base_url();?>public/app-assets/vendors/js/extensions/toastr.min.js"></script>-->
     <script src="<?php echo base_url();?>public/app-assets/vendors/js/extensions/moment.min.js"></script>
     <script src="<?php echo base_url();?>public/app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url();?>public/app-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
@@ -280,12 +262,7 @@
     <!-- BEGIN: Theme JS-->
     <script src="<?php echo base_url();?>public/app-assets/js/core/app-menu.js"></script>
     <script src="<?php echo base_url();?>public/app-assets/js/core/app.js"></script>
-    <!-- END: Theme JS-->
-
-    <!-- BEGIN: Page JS-->
-    <script src="<?php echo base_url();?>public/app-assets/js/scripts/pages/dashboard-analytics.js"></script>
-    <script src="<?php echo base_url();?>public/app-assets/js/scripts/pages/app-invoice-list.js"></script>
-    <!-- END: Page JS-->
+    
 
     <script>
         $(window).on('load', function() {

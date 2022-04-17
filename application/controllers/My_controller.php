@@ -113,22 +113,46 @@ class My_controller extends CI_Controller {
             echo "something wrong";
           }
         }
-      
-
-        public function update_faculty_data()
-          {
-          $id=$this->input->get('id');
-          $result['data']=$this->My_model->displayrecordsById($id);
-          $this->load->view('update_records',$result);	
-          
-            if($this->input->post('update'))
-            {
-            $n=$this->input->post('name');
-            $e=$this->input->post('email');
-            $m=$this->input->post('mobile');
-            $this->Hello_Model->updaterecords($n,$e,$m,$id);
-            redirect("Hello/dispdata");
-            }
-          }
+        public function update(){
         
-        }
+        // $post_data['rank'] =$this->input->post('rank');
+        // $post_data['first_name'] =$this->input->post('first_name');
+        // $post_data['middle_name'] =$this->input->post('middle_name');
+        // $post_data['last_name'] =$this->input->post('last_name');
+        // $post_data['gender'] =$this->input->post('gender');
+        // $post_data['email'] = $this->input->post('email');
+        // $post_data['address'] = $this->input->post('address');
+        // $post_data['contact'] = $this->input->post('contact');
+        // $post_data['time_allocated'] = $this->input->post('time');
+        // $post_data['status'] = $this->input->post('status');
+        // $result = $this->My_model->edit_faculty('teachers',$post_data, array("id" => 1));
+        // if($result){
+        //     echo "Faculty updated";
+        // }else{
+        //     echo "Faculty not updated";
+        // }
+      
+        
+        // }
+        $data = array(
+            'fac_id'=>$this->input->post('fac_id'),
+            'rank'=>$this->input->post('rank'),
+            'first_name'=>$this->input->post('first_name'),
+            'middle_name'=>$this->input->post('middle_name'),
+            'last_name'=>$this->input->post('last_name'),
+            'gender'=>$this->input->post('gender'),
+            'email'=>$this->input->post('email'),
+            'address'=>$this->input->post('address'),
+            'contact'=>$this->input->post('ccontact'),
+            'time_allocated'=>$this->input->post('time'),
+            'status'=>$this->input->post('status')
+
+          
+
+      
+        );
+          $this->My_model->update_faculty($data);
+          redirect('faculty');
+      }
+        
+    }

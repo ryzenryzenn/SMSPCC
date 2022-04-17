@@ -52,17 +52,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
      }
 
 
-     public function update_faculty($id) {
-
-
-          $this->db->where("fac_id",);
-          $this->db->update("teachers");
-          return true;
-     }
+    
      public function get_count_faculty() {
           $this->db->select('first_name');
           $this->db->from('teachers');
           return $this->db->count_all_results();
+     }
+
+
+     public function update_faculty($data) {
+
+          $this->db->where('fac_id', $data['fac_id']);
+          $this->db->update('teachers', $data);
+          return true;
+
+          
+       
      }
 }
 
