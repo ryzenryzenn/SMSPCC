@@ -99,7 +99,7 @@ class My_controller extends CI_Controller {
             );
             $this->My_model->add_faculty($data);
             redirect('faculty');
-        }
+        }                                         
 
      
 
@@ -154,5 +154,82 @@ class My_controller extends CI_Controller {
           $this->My_model->update_faculty($data);
           redirect('faculty');
       }
-        
+        public function section(){
+          
+          
+          $data['data']= $this->My_model->display_section();
+     
+          $this->load->view('section',$data);
+
+        }
+
+        public function add_section(){
+
+          $data = array(
+            'sec_desc'=> $this->input->post('sec_name'),
+            );
+            $this->My_model->add_section($data);
+            redirect('section');
+        }
+
+        public function delete_section(){
+          $id=$this->input->get('sec_id');
+          $response=$this->My_model->delete_section($id);
+          if($response == true){
+            redirect('section');
+          }else{
+            echo "something wrong";
+          }
+        }
+
+        public function update_section(){
+
+          $data = array(
+            'sec_id'=>$this->input->post('sec_id'),
+            'sec_desc'=>$this->input->post('sec_name')
+      
+        );
+          $this->My_model->update_section($data);
+          redirect('section');
+        }
+        public function year(){
+          
+          
+          $data['data']= $this->My_model->display_year();
+     
+          $this->load->view('year',$data);
+
+        }
+
+        public function add_year(){
+
+          $data = array(
+            'yr_list'=> $this->input->post('year_list'),
+            'yr_sem'=> $this->input->post('year_sem'),
+            );
+            $this->My_model->add_year($data);
+            redirect('year');
+        }
+
+        public function delete_year(){
+          $id=$this->input->get('yr_id');
+          $response=$this->My_model->delete_year($id);
+          if($response == true){
+            redirect('year');
+          }else{
+            echo "something wrong";
+          }
+        }
+
+        public function update_year(){
+
+          $data = array(
+            'yr_id'=>$this->input->post('yr_id'),
+            'yr_list'=>$this->input->post('yr_list'),
+            'yr_sem'=>$this->input->post('yr_sem')
+      
+        );
+          $this->My_model->update_year($data);
+          redirect('year');
+        }
     }

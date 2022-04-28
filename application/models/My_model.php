@@ -69,6 +69,63 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           
        
      }
+
+     public function add_section($data) {
+          $sql = "INSERT INTO section(sec_desc)VALUES ?";
+          $data = array($data);
+          return $this->db->query($sql,$data);
+
+     }
+     public function display_section(){
+          $this->db->select("*");
+          $this->db->from("section");
+          $query = $this->db->get();
+          return  $query;
+     }
+
+     public function delete_section($id){
+
+          $this->db->where("sec_id",$id);
+          $this->db->delete("section");
+          return true;
+     }
+     public function update_section($data) {
+
+          $this->db->where('sec_id', $data['sec_id']);
+          $this->db->update('section', $data);
+          return true;
+
+          
+       
+     }
+     public function add_year($data) {
+          $sql = "INSERT INTO year_list(yr_list,yr_sem)VALUES ?";
+          $data = array($data);
+          return $this->db->query($sql,$data);
+
+     }
+     public function display_year(){
+          $this->db->select("*");
+          $this->db->from("year_list");
+          $query = $this->db->get();
+          return  $query;
+     }
+
+     public function delete_year($id){
+
+          $this->db->where("yr_id",$id);
+          $this->db->delete("year_list");
+          return true;
+     }
+     public function update_year($data) {
+
+          $this->db->where('yr_id', $data['yr_id']);
+          $this->db->update('year_list', $data);
+          return true;
+
+          
+       
+     }
 }
 
           

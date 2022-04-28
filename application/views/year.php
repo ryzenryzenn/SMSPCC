@@ -9,7 +9,7 @@
     <meta name="description" content="Schedule">
     <meta name="keywords" content="Schedule">
     <meta name="author" content="Schedule">
-    <title>Faculty</title>
+    <title>Year List</title>
     <link rel="apple-touch-icon" href="<?php echo base_url();?>public/app-assets/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url();?>public/app-assets/images/ico/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
@@ -111,7 +111,7 @@
                 </li>
                 <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i data-feather="more-horizontal"></i>
                 </li>
-                <li class=" nav-item"><a class="d-flex align-items-center" href="<?php echo base_url(); ?>My_controller/year"><i data-feather="cloud"></i><span class="menu-title text-truncate" data-i18n="Email">Year List</span></a>
+                <li class=" nav-item"><a class="d-flex align-items-center" href=""><i data-feather="cloud"></i><span class="menu-title text-truncate" data-i18n="Email">Year List</span></a>
                 </li>
                 <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="book"></i><span class="menu-title text-truncate" data-i18n="Chat">Subject List</span></a>
                 </li>
@@ -137,7 +137,7 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">Faculty List</h2>
+                            <h2 class="content-header-title float-left mb-0">Year List</h2>
                         </div>
                     </div>
                 </div>
@@ -146,7 +146,7 @@
                 <!-- Basic table -->
                 <section id="basic-datatable">
                     <div class="mb-2">
-                <button class="dt-button create-new btn btn-primary " tabindex="0" aria-controls="DataTables_Table_0" type="button" data-toggle="modal" data-target="#modals-slide-in"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus  font-small-4 "></svg>Add New Record</span></button>
+                <button class="dt-button create-new btn btn-primary " tabindex="0" aria-controls="DataTables_Table_0" type="button" data-toggle="modal" data-target="#modals-slide-in"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus  font-small-4 "></svg>Add Year</span></button>
                 </div>
                 <div class="row">
                         <div class="col-12">
@@ -155,44 +155,26 @@
                                     <thead>
                                         <tr>
                                             <th style="display:none;">id</th>
-                                            <th>Rank</th>
-                                            <th>First Name</th>
-                                            <th>Middle Name</th>
-                                            <th>Last Name</th>
-                                            <th>Gender</th>
-                                            <th>Email</th>
-                                            <th>Address</th>
-                                            <th>Contact</th>
-                                            <th>Time Allocated</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
+                                            <th>School Year</th>
+                                            <th>Year Semester</th>
+                                            <th style="text-align:center;">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                         <?php foreach($data->result() as $row){?>
                         <tr>
-                          <td style="display:none;"><?=$row->fac_id?></td>
-                          <td><?=$row->rank?></td>
-                          <td><?=$row->first_name?></td>
-                          <td><?=$row->middle_name?></td>
-                          <td><?=$row->last_name?></td>
-                          <td><?=$row->gender?></td>
-                          <td><?=$row->email?></td>
-                          <td><?=$row->address?></td>
-                          <td><?=$row->contact?></td>
-                          <td><?=$row->time_allocated?></td>
-                          <td><?=$row->status?></td>
-                        
+                          <td style="display:none;"><?=$row->yr_id?></td>
+                          <td><?=$row->yr_list?></td>
+                          <td><?=$row->yr_sem?></td>
                           <td>
 
 
-                      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Actions
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="btn btn-danger" style="float:right;" href="<?=base_url('My_controller/delete_year');?>?yr_id=<?=$row->yr_id?>">
+                               Delete
+                            </a>
+                         
                            
-                                <a class="dropdown-item editbtn" href="<?=base_url('My_controller/edit_faculty');?>?fac_id=<?=$row->fac_id?>" data-toggle="modal" data-target="#edit">Edit</a>
-                                <a class="dropdown-item" href="<?=base_url('My_controller/delete_faculty');?>?fac_id=<?=$row->fac_id?>">Delete</a>
+               
                             </div>
                           </td>
                         
@@ -208,72 +190,26 @@
                     <!-- Modal to add new record -->
                     <div class="modal modal-slide-in fade" id="modals-slide-in">
                         <div class="modal-dialog sidebar-sm">
-                            <form class="add-new-record modal-content pt-0" method="POST" action="<?=base_url();?>My_controller/add_faculty">
+                            <form class="add-new-record modal-content pt-0" method="POST" action="<?=base_url();?>My_controller/add_year">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
                                 <div class="modal-header mb-1">
-                                    <h5 class="modal-title" id="exampleModalLabel">Add faculty</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Add Year</h5>
                                 </div>
                                 <div class="modal-body flex-grow-1">
-                                <div class="form-group">
+                                    <div class="form-group">
+                                        <label class="form-label" for="basic-icon-default-post">School Year</label>
+                                        <input type="text" id="basic-icon-default-post" class="form-control " placeholder="Year" aria-label="Year" name="year_list" required/>
+                                    </div>
+                                    <div class="form-group">
                                     
-                                            <label for="Rank" class="form-label">Rank</label>
-                                            <select class="select2 select-label form-control w-100" id="select-label" name="rank">
-                                                <option data-label="primary" value="Dean" selected>Dean</option>
-                                                <option data-label="danger" value="LPT">LPT</option>
-                                                <option data-label="warning" value="Master">Master</option>
-                                                <option data-label="success" value="I">I</option>
-                                                <option data-label="info" value="II">II</option>
+                                            <label for="Semester" class="form-label">Semester</label>
+                                            <select class="select2 select-label form-control w-100" id="select-label" name="year_sem">
+                                                <option data-label="primary" value="First Semester" selected>First Semester</option>
+                                                <option data-label="danger" value="Second Semester">Second Semester</option>
+                                             
                                             </select>
                                         </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="basic-icon-default-post">First Name</label>
-                                        <input type="text" id="basic-icon-default-post" class="form-control " placeholder="First Name" aria-label="First Name" name="first_name" required/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="basic-icon-default-email">Middle Name</label>
-                                        <input type="text" id="basic-icon-default-email" class="form-control " placeholder="Middle Name" aria-label="Middle Name" name="middle_name" required/>
-                                    
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="basic-icon-default-post">Last Name</label>
-                                        <input type="text" id="basic-icon-default-post" class="form-control dt-post" placeholder="Last Name" aria-label="Last Name" name="last_name" required/>
-                                    </div>
-                                    <div class="form-group">
-                                            <label for="Gender" class="form-label">Gender</label>
-                                            <select class="select2 select-label form-control w-100" id="select-label" name="gender" >
-                                                <option data-label="primary" value="Male" selected>Male</option>
-                                                <option data-label="danger" value="Female">Female</option>
-                                            </select>
-                                        </div>
-                                 
-                                    <div class="form-group">
-                                        <label class="form-label" for="basic-icon-default-post">Address</label>
-                                        <input type="text" id="basic-icon-default-post" class="form-control dt-post" placeholder="Address" aria-label="Address" name="address" required/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="basic-icon-default-post">Email</label>
-                                        <input type="email" id="email-id-vertical" class="form-control dt-email" name="email" placeholder="juan.delacruz@example.com" aria-label="juan.delacruz@example.com"  required/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="basic-icon-default-post">Time Allocated</label>
-                                        <select class="select2 select-label form-control w-100" id="select-label" name="time">
-                                                <option data-label="primary" value="3 Hours" selected>3 Hours</option>
-                                                <option data-label="danger" value="6 Hours">6 Hours</option>
-                                               
-                                            </select>
-                                    </div>
-                                    <div class="form-group">
-                                            <label for="Status" class="form-label">Status</label>
-                                            <select class="select2 select-label form-control w-100" id="select-label" name="status">
-                                                <option data-label="primary" value="Full Time" selected>Full Time</option>
-                                                <option data-label="danger" value="Part Time">Part Time</option>
-                                               
-                                            </select>
-                                        </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="basic-icon-default-post">Contact</label>
-                                        <input type="number" id="contact-info-vertical" class="form-control" name="contact" placeholder="Mobile" required >
-                                    </div>
+                                    <hr>
                                   
                                     <button type="submit" class="btn btn-primary data-submit mr-1">Submit</button>
                                     <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
@@ -283,85 +219,7 @@
                     </div>
                 </section>
                <!-- Modal to edit new record -->
-               <div class="modal modal-slide-in fade" id="edit">
-                        <div class="modal-dialog sidebar-sm">
-                            <form class="add-new-record modal-content pt-0" method="POST" action="update">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
-                                <div class="modal-header mb-1">
-                                    <h5 class="modal-title" id="exampleModalLabel">Edit faculty</h5>
-                                </div>
-                                <div class="modal-body flex-grow-1">
-                                <div class="form-group" style="display:none;">
-                                        <label class="form-label" for="basic-icon-default-post">ID</label>
-                                        <input type="text" class="form-control " id="id" placeholder="ID" aria-label="ID" name="fac_id" required/>
-                                    </div>
-                                <div class="form-group">
-                                    
-                                            <label for="Rank" class="form-label">Rank</label>
-                                            <select class="select2 select-label form-control w-100" id="ranky" name="rank">
-                                                <option data-label="primary" value="Dean" selected>Dean</option>
-                                                <option data-label="danger" value="LPT">LPT</option>
-                                                <option data-label="warning" value="Master">Master</option>
-                                                <option data-label="success" value="I">I</option>
-                                                <option data-label="info" value="II">II</option>
-                                            </select>
-                                        </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="basic-icon-default-post">First Name</label>
-                                        <input type="text" class="form-control " id="first"placeholder="First Name" aria-label="First Name" name="first_name" required/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="basic-icon-default-email">Middle Name</label>
-                                        <input type="text"  class="form-control "id="e_middle_name" placeholder="Middle Name" aria-label="Middle Name" name="middle_name" required/>
-                                    
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="basic-icon-default-post">Last Name</label>
-                                        <input type="text"  class="form-control dt-post" id="e_last_name"placeholder="Last Name" aria-label="Last Name" name="last_name" required/>
-                                    </div>
-                                    <div class="form-group">
-                                            <label for="Gender" class="form-label">Gender</label>
-                                            <select class="select2 select-label form-control w-100" id="e_gender" name="gender" >
-                                                <option data-label="primary" value="Male" selected>Male</option>
-                                                <option data-label="danger" value="Female">Female</option>
-                                            </select>
-                                        </div>
-                                 
-                                    <div class="form-group">
-                                        <label class="form-label" for="basic-icon-default-post">Address</label>
-                                        <input type="text"class="form-control dt-post" id="e_address" placeholder="Address" aria-label="Address" name="address" required/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="basic-icon-default-post">Email</label>
-                                        <input type="email"  class="form-control dt-email" id="e_email"name="email" placeholder="john.doe@example.com" aria-label="juan.delacruz@example.com"  required/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="basic-icon-default-post">Time Allocated</label>
-                                        <select class="select2 select-label form-control w-100" id="e_time" name="time">
-                                                <option data-label="primary" value="3 Hours" selected>3 Hours</option>
-                                                <option data-label="danger" value="6 Hours">6 Hours</option>
-                                               
-                                            </select>
-                                    </div>
-                                    <div class="form-group">
-                                            <label for="Status" class="form-label">Status</label>
-                                            <select class="select2 select-label form-control w-100" id="e_status" name="status">
-                                                <option data-label="primary" value="Full Time" selected>Full Time</option>
-                                                <option data-label="danger" value="Part Time">Part Time</option>
-                                               
-                                            </select>
-                                        </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="basic-icon-default-post">Contact</label>
-                                        <input type="number"  class="form-control" id="e_contact" name="ccontact" placeholder="Mobile" required >
-                                    </div>
-                                  
-                                    <button type="submit" class="btn btn-primary data-submit mr-1">Submit</button>
-                                    <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+               
 
               
 
@@ -432,16 +290,10 @@
     return $(this).text();
     }).get();
     $('#id').val(data[0]);
-    $('#ranky').val(data[1]);
-    $('#first').val(data[2]);
-    $('#e_middle_name').val(data[3]);
-    $('#e_last_name').val(data[4]);
-    $('#e_gender').val(data[5]);
-    $('#e_email').val(data[6]);
-    $('#e_address').val(data[7]);
-    $('#e_contact').val(data[8]);
-    $('#e_time').val(data[9]);
-    $('#e_status').val(data[10]);
+    $('#e_yr_list').val(data[1]);
+    $('#e_yr_sem').val(data[2])
+    
+ 
    
   
     });
