@@ -232,4 +232,42 @@ class My_controller extends CI_Controller {
           $this->My_model->update_year($data);
           redirect('year');
         }
+
+
+        public function subject(){
+          $data['data']= $this->My_model->display_subject();
+     
+          $this->load->view('subject',$data);
+         
+        }
+        public function add_subject(){
+          $data = array(
+            'subj_code'=> $this->input->post('subj_code'),
+            'subj_desc'=> $this->input->post('subj_desc'),
+            );
+            $this->My_model->add_subject($data);
+            redirect('subject');
+        }
+
+        public function update_subject(){
+          $data = array(
+            'subj_id'=>$this->input->post('subj_id'),
+            'subj_code'=>$this->input->post('subj_code'),
+            'subj_desc'=>$this->input->post('subj_desc')
+      
+        );
+          $this->My_model->update_subject($data);
+          redirect('subject');
+        }
+
+        public function delete_subject(){
+
+          $id=$this->input->get('subj_id');
+          $response=$this->My_model->delete_subject($id);
+          if($response == true){
+            redirect('subject');
+          }else{
+            echo "something wrong";
+          }
+        }
     }

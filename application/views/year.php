@@ -111,9 +111,9 @@
                 </li>
                 <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i data-feather="more-horizontal"></i>
                 </li>
-                <li class=" nav-item"><a class="d-flex align-items-center" href=""><i data-feather="cloud"></i><span class="menu-title text-truncate" data-i18n="Email">Year List</span></a>
+                <li class=" nav-item"><a class="d-flex align-items-center" href="<?php echo base_url(); ?>My_controller/year"><i data-feather="cloud"></i><span class="menu-title text-truncate" data-i18n="Email">Year List</span></a>
                 </li>
-                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="book"></i><span class="menu-title text-truncate" data-i18n="Chat">Subject List</span></a>
+                <li class=" nav-item"><a class="d-flex align-items-center" href="<?php echo base_url(); ?>My_controller/subject"><i data-feather="book"></i><span class="menu-title text-truncate" data-i18n="Chat">Subject List</span></a>
                 </li>
                 <li class=" nav-item"><a class="d-flex align-items-center" href="<?php echo base_url(); ?>My_controller/section"><i data-feather="clipboard"></i><span class="menu-title text-truncate" data-i18n="Todo">Sections</span></a>
                 </li>

@@ -122,9 +122,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           $this->db->where('yr_id', $data['yr_id']);
           $this->db->update('year_list', $data);
           return true;
+     }
+     public function add_subject($data) {
+          $sql = "INSERT INTO subj_list(subj_code,subj_desc)VALUES ?";
+          $data = array($data);
+          return $this->db->query($sql,$data);
+     }
 
-          
-       
+     public function display_subject() {
+          $this->db->select("*");
+          $this->db->from("subj_list");
+          $query = $this->db->get();
+          return  $query;
+     }
+
+     public function update_subject($data) {
+
+          $this->db->where('subj_id', $data['subj_id']);
+          $this->db->update('subj_list', $data);
+          return true;
+     }
+
+     public function delete_subject($id) {
+          $this->db->where("subj_id",$id);
+          $this->db->delete("subj_list");
+          return true;
      }
 }
 

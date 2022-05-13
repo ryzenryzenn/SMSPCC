@@ -6,20 +6,21 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
-    <meta name="description" content="SMSPCC Dashboard"">
-    <meta name="keywords" content="SMSPCC Dashboard">
-    <meta name="author" content="">
-    <title>Dashboard</title>
+    <meta name="description" content="Schedule">
+    <meta name="keywords" content="Schedule">
+    <meta name="author" content="Schedule">
+    <title>Year List</title>
     <link rel="apple-touch-icon" href="<?php echo base_url();?>public/app-assets/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url();?>public/app-assets/images/ico/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
-
+    
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/app-assets/vendors/css/vendors.min.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/app-assets/vendors/css/charts/apexcharts.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/app-assets/vendors/css/extensions/toastr.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/app-assets/vendors/css/tables/datatable/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/app-assets/vendors/css/tables/datatable/responsive.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/app-assets/vendors/css/tables/datatable/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/app-assets/vendors/css/tables/datatable/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/app-assets/vendors/css/tables/datatable/rowGroup.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/app-assets/vendors/css/pickers/flatpickr/flatpickr.min.css">
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -33,19 +34,14 @@
 
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/app-assets/css/core/menu/menu-types/vertical-menu.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/app-assets/css/plugins/charts/chart-apex.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/app-assets/css/plugins/extensions/ext-component-toastr.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/app-assets/css/pages/app-invoice-list.css">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <!-- END: Custom CSS-->
 
-    
 </head>
-<!-- END: Head-->
-
 <!-- END: Head-->
 
 <!-- BEGIN: Body-->
@@ -62,6 +58,7 @@
             </div>
             <ul class="nav navbar-nav align-items-center ml-auto">
                 <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-style"><i class="ficon" data-feather="sun"></i></a></li>
+              
                 <li class="nav-item dropdown dropdown-user">
                     <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="user-nav d-sm-flex d-none"><span class="user-name font-weight-bolder">Admin</span><span class="user-status">Admin</span></div><span class="avatar"><img class="round" src="<?php echo base_url();?>public/app-assets/images/portrait/small/avatar-s-11.jpg" alt="avatar" height="40" width="40"><span class="avatar-status-online"></span></span>
@@ -72,10 +69,11 @@
             </ul>
         </div>
     </nav>
+
+
     <!-- BEGIN: Main Menu-->
     <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="navbar-header">
-      
             <ul class="nav navbar-nav flex-row">
                 <li class="nav-item mr-auto"><a class="navbar-brand" href="#"><span class="brand-logo">
                             <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="24">
@@ -108,9 +106,8 @@
         </div>
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
-      
-            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Dashboards</span></a>
+        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+                <li class=" nav-item"><a class="d-flex align-items-center" href="<?php echo base_url(); ?>My_controller/dashboard"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Dashboards</span></a>
                 </li>
                 <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i data-feather="more-horizontal"></i>
                 </li>
@@ -124,11 +121,9 @@
                 </li>
                 <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="calendar"></i><span class="menu-title text-truncate" data-i18n="Calendar">Schedule</span></a>
                 </li>
-               
+                
             </ul>
         
-            
-               
         </div>
     </div>
     <!-- END: Main Menu-->
@@ -139,86 +134,122 @@
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper container-xxl p-0">
             <div class="content-header row">
-            </div>
-            <div class="content-body">
-                <!-- Dashboard Analytics Start -->
-                <section id="dashboard-analytics">
-                    <div class="row match-height">
-                        <!-- Statistics Card -->
-                        <div class="col-xl-12 col-md-6 col-12">
-                            <div class="card card-statistics">
-                                <div class="card-header">
-                                    <h4 class="card-title">Dashboards</h4>
-                                </div>
-                                <div class="card-body statistics-body">
-                                    <div class="row">
-                                        <div class="col-xl-6 col-sm-6 col-12 mb-2 mb-xl-0">
-                                            <div class="media">
-                                                <div class="avatar bg-light-primary mr-2">
-                                                    <div class="avatar-content">
-                                                        <i data-feather="briefcase" class="avatar-icon"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="media-body my-auto">
-                                                    <h4 class="font-weight-bolder mb-0">4</h4>
-                                                    <p class="card-text font-small-3 mb-0">Teachers Today</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6 col-sm-6 col-12 mb-2 mb-xl-0">
-                                            <div class="media">
-                                                <div class="avatar bg-light-info mr-2">
-                                                    <div class="avatar-content">
-                                                        <i data-feather="users" class="avatar-icon"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="media-body my-auto">
-                                                    <h4 class="font-weight-bolder mb-0"><?php echo $query;?></h4>
-                                                    <p class="card-text font-small-3 mb-0">Faculty Teachers</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
+                <div class="content-header-left col-md-9 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <h2 class="content-header-title float-left mb-0">Subject List</h2>
                         </div>
-                        <!--/ Statistics Card -->
-
                     </div>
-
-                    <!-- List DataTable -->
-                    <section id="responsive-datatable">
-                    <div class="row">
+                </div>
+            </div>
+           
+                <!-- Basic table -->
+                <section id="basic-datatable">
+                    <div class="mb-2">
+                <button class="dt-button create-new btn btn-primary " tabindex="0" aria-controls="DataTables_Table_0" type="button" data-toggle="modal" data-target="#modals-slide-in"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus  font-small-4 "></svg>Add Subject</span></button>
+                </div>
+                <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <div class="card-header border-bottom">
-                                    <h4 class="card-title">Students Report</h4>
-                                </div>
-                                <div class="card-datatable">
-                                    <table class="dt-responsive table">
-                                        <thead>
-                                            <tr>
-                                                <th></th>
-                                                <th>Student Name</th>
-                                                <th>Faculty</th>
-                                                <th>Subject</th>
-                                                <th>Time In</th>
-                                                <th>Time Out</th>
-                                              
-                                            </tr>
-                                        </thead>
-                                     
-                                    </table>
-                                </div>
+                                <table class="datatables-basic table" id="myTable">
+                                    <thead>
+                                        <tr>
+                                            <th style="display:none;">id</th>
+                                            <th>Subject Code</th>
+                                            <th>Subject Description</th>
+                                            <th style="text-align:center;">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                        <?php foreach($data->result() as $row){?>
+                        <tr>
+                          <td style="display:none;"><?=$row->subj_id?></td>
+                          <td><?=$row->subj_code?></td>
+                          <td><?=$row->subj_desc?></td>
+                          <td>
+
+
+                          <button class="btn btn-primary dropdown-toggle" style="float:right;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Actions
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                           
+                                <a class="dropdown-item editbtn" href="<?=base_url('My_controller/edit_subject');?>?subj_id=<?=$row->subj_id?>" data-toggle="modal" data-target="#edit">Edit</a>
+                                <a class="dropdown-item" href="<?=base_url('My_controller/delete_subject');?>?subj_id=<?=$row->subj_id?>">Delete</a>
+                            </div>
+               
+                           
+                          </td>
+                        
+                      
+                        </tr> 
+                        <?php } ?>
+                      </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- Modal to add new record -->
+                    <div class="modal modal-slide-in fade" id="modals-slide-in">
+                        <div class="modal-dialog sidebar-sm">
+                            <form class="add-new-record modal-content pt-0" method="POST" action="<?=base_url();?>My_controller/add_subject">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
+                                <div class="modal-header mb-1">
+                                    <h5 class="modal-title" id="exampleModalLabel">Add Subject</h5>
+                                </div>
+                                <div class="modal-body flex-grow-1">
+                                    <div class="form-group">
+                                        <label class="form-label" for="basic-icon-default-post">Subject Code</label>
+                                        <input type="text" id="e_code" class="form-control " placeholder="Subject Code" aria-label="Subject Code" name="subj_code" required/>
+                                    </div>
+                                    <div class="form-group">
+                                    
+                                            <label for="subject description" class="form-label">Subject Description</label>
+                                            <input type="text" id="e_subj" class="form-control dt-post" placeholder="Subject Description" aria-label="Subject Description" name="subj_desc" required/>
+                                        </div>
+                                    <hr>
+                                  
+                                    <button type="submit" class="btn btn-primary data-submit mr-1">Submit</button>
+                                    <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </section>
-                <!--/ Responsive Datatable -->
+                <div class="modal modal-slide-in fade" id="edit">
+                        <div class="modal-dialog sidebar-sm">
+                            <form class="add-new-record modal-content pt-0" method="POST" action="<?=base_url();?>My_controller/update_subject">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
+                                <div class="modal-header mb-1">
+                                    <h5 class="modal-title" id="exampleModalLabel">Edit Subjects</h5>
+                                </div>
+                                <div class="modal-body flex-grow-1">
+                                <div class="form-group" style="display:none;">
+                                        <label class="form-label" for="basic-icon-default-post">ID</label>
+                                        <input type="text" class="form-control " id="id" placeholder="ID" aria-label="ID" name="subj_id" required/>
+                                    </div>
+                             
+                                    <div class="form-group">
+                                        <label class="form-label" for="basic-icon-default-post">Section Code</label>
+                                        <input type="text" class="form-control " id="subj_code"placeholder="Section" aria-label="sec_name" name="subj_code" required/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="basic-icon-default-post">Subject Description</label>
+                                        <input type="text" class="form-control " id="subj_desc"placeholder="Section" aria-label="sec_name" name="subj_desc" required/>
+                                    </div>
+                                   
+                                    <button type="submit" class="btn btn-primary data-submit mr-1">Submit</button>
+                                    <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+               <!-- Modal to edit new record -->
+               
 
-                </section>
-                <!-- Dashboard Analytics end -->
+              
+
 
             </div>
         </div>
@@ -230,9 +261,7 @@
 
     <!-- BEGIN: Footer-->
     <footer class="footer footer-static footer-light">
-        <p class="clearfix mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2022<a class="ml-25" href="" target="_blank">SMSPCC</a><span class="d-none d-sm-inline-block">, All rights Reserved</span></span>
-            
-        </p>
+        <p class="clearfix mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2022<a class="ml-25" href="#" target="_blank">SMSPCC</a><span class="d-none d-sm-inline-block">, All rights Reserved</span></span></p>
     </footer>
     <button class="btn btn-primary btn-icon scroll-top" type="button"><i data-feather="arrow-up"></i></button>
     <!-- END: Footer-->
@@ -243,20 +272,30 @@
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
-    <script src="<?php echo base_url();?>public/app-assets/vendors/js/charts/apexcharts.min.js"></script>
-    <!-- <script src="<?php echo base_url();?>public/app-assets/vendors/js/extensions/toastr.min.js"></script>-->
-    <script src="<?php echo base_url();?>public/app-assets/vendors/js/extensions/moment.min.js"></script>
-    <script src="<?php echo base_url();?>public/app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
-    <script src="<?php echo base_url();?>public/app-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
+    <script src="<?php echo base_url();?>public//app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url();?>public/app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js"></script>
     <script src="<?php echo base_url();?>public/app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
-    <script src="<?php echo base_url();?>public/app-assets/vendors/js/tables/datatable/responsive.bootstrap4.min.js"></script>
+    <script src="<?php echo base_url();?>public/app-assets/vendors/js/tables/datatable/responsive.bootstrap4.js"></script>
+    <script src="<?php echo base_url();?>public/app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js"></script>
+    <script src="<?php echo base_url();?>public/app-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
+    <script src="<?php echo base_url();?>public/app-assets/vendors/js/tables/datatable/jszip.min.js"></script>
+    <script src="<?php echo base_url();?>public/app-assets/vendors/js/tables/datatable/pdfmake.min.js"></script>
+    <script src="<?php echo base_url();?>public/app-assets/vendors/js/tables/datatable/vfs_fonts.js"></script>
+    <script src="<?php echo base_url();?>public/app-assets/vendors/js/tables/datatable/buttons.html5.min.js"></script>
+    <script src="<?php echo base_url();?>public/app-assets/vendors/js/tables/datatable/buttons.print.min.js"></script>
+    <script src="<?php echo base_url();?>public/app-assets/vendors/js/tables/datatable/dataTables.rowGroup.min.js"></script>
+    <script src="<?php echo base_url();?>public/app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
     <script src="<?php echo base_url();?>public/app-assets/js/core/app-menu.js"></script>
     <script src="<?php echo base_url();?>public/app-assets/js/core/app.js"></script>
-    
+    <!-- END: Theme JS-->
+
+    <!-- BEGIN: Page JS-->
+    <script src="<?php echo base_url();?>public/app-assets/js/scripts/tables/table-datatables-basic.js"></script>
+    <!-- END: Page JS-->
 
     <script>
         $(window).on('load', function() {
@@ -270,5 +309,28 @@
     </script>
 </body>
 <!-- END: Body-->
+<script>
+    $(document).ready(function(){
+    $(document).on('click','.editbtn',function(){
+    $tr = $(this).closest('tr');
+    var data = $tr.children("td").map(function(){
+    return $(this).text();
+    }).get();
+    $('#id').val(data[0]);
+    $('#subj_code').val(data[1]);
+    $('#subj_desc').val(data[2])
+    
+ 
+   
+  
+    });
 
+  });
+  
+  </script>
+<script>
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
 </html>
