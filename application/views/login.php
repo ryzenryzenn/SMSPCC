@@ -85,10 +85,28 @@
                             <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
                                 <h2 class="card-title font-weight-bold mb-1 text-primary">Welcome to SMSPCC! </h2>
                                 <p class="card-text mb-2">Please sign-in to your account and start your journey</p>
+                                <?php
+                                   $flashdata="";
+                                   $unsetflash_data="";
+                                   if($this->session->flashdata('error'))
+                                   {
+                                     $flashdata=$this->session->flashdata('error');
+                                     $unsetflash_data="error";
+                                     $alert_danger = 'class="valid"';
+                                   }
+                                   
+                                 ?>
+                                  <?php if($flashdata):?>
+                                     <div <?=$alert_danger?> role="alert" id="hide">
+                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                                     <i class="icon fa fa-cheack"></i> <?= $flashdata?>
+                                     </div>
+                                   <?php unset($_SESSION[$unsetflash_data]);?>
+                                  <?php  endif; ?>
                                 <form class="auth-login-form mt-2" action="<?php echo base_url(); ?>My_controller/login_validation" method="POST">
                                     <div class="form-group">
                                         <label class="form-label">Username</label>
-                                        <input class="form-control" type="text" name="username" placeholder="" aria-describedby="username" autofocus="" tabindex="1" />
+                                        <input class="form-control" type="text" name="username" placeholder="" aria-describedby="username" autofocus="" tabindex="1" required/>
                                        
                                     </div>
                                     <div class="form-group">
@@ -96,7 +114,7 @@
                                             <label for="login-password">Password</label><a href="page-auth-forgot-password-v2.html"><small>Forgot Password?</small></a>
                                         </div>
                                         <div class="input-group input-group-merge form-password-toggle">
-                                            <input class="form-control form-control-merge" id="password" type="password" name="password" placeholder="············" aria-describedby="login-password" tabindex="2" />
+                                            <input class="form-control form-control-merge" id="password" type="password" name="password" placeholder="············" aria-describedby="login-password"  required tabindex="2" />
                                             <div class="input-group-append"><span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span></div>
                                         </div>
                                     </div>
@@ -149,6 +167,10 @@
                     });
                 }
             })
+        </script>
+        <script>
+         setTimeout(()=>$('.valid').remove(),3000);
+
         </script>
 </body>
 <!-- END: Body-->

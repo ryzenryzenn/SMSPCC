@@ -148,7 +148,83 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           $this->db->delete("subj_list");
           return true;
      }
-}
+     
+     public function get_faculty(){
+
+          $query = $this->db->get('teachers');
+          $result = $query->result();
+  
+          $fac_id = array('Select one');
+          $last_name = array('Select one');
+          
+          for ($i = 0; $i < count($result); $i++)
+          {
+              array_push($fac_id, $result[$i]->fac_id);
+              array_push($last_name, $result[$i]->last_name);
+          }
+          return array_combine($fac_id, $last_name);
+      }
+
+      public function get_year(){
+          $query = $this->db->get('year_list');
+          $result = $query->result();
+  
+          $yr_id = array('Select one');
+          $yr_list = array('Select one');
+          
+          for ($i = 0; $i < count($result); $i++)
+          {
+              array_push($yr_id, $result[$i]->yr_id);
+              array_push($yr_list, $result[$i]->yr_list);
+          }
+          return array_combine($yr_id, $yr_list);
+      }
+      public function get_sem(){
+          $query = $this->db->get('year_list');
+          $result = $query->result();
+  
+          $yr_id = array('Select one');
+          $yr_sem = array('Select one');
+          
+          for ($i = 0; $i < count($result); $i++)
+          {
+              array_push($yr_id, $result[$i]->yr_id);
+              array_push($yr_sem, $result[$i]->yr_sem);
+          }
+          return array_combine($yr_id, $yr_sem);
+      }
+
+      public function get_subject(){
+          $query = $this->db->get('subj_list');
+          $result = $query->result();
+  
+          $subj_id = array('Select one');
+          $subj_code = array('Select one');
+          
+          for ($i = 0; $i < count($result); $i++)
+          {
+              array_push($subj_id, $result[$i]->subj_id);
+              array_push($subj_code, $result[$i]->subj_code);
+          }
+          return array_combine($subj_id, $subj_code);
+      }
+
+      public function get_section(){
+          $query = $this->db->get('section');
+          $result = $query->result();
+  
+          $sec_id = array('Select one');
+          $sec_desc = array('Select one');
+          
+          for ($i = 0; $i < count($result); $i++)
+          {
+              array_push($sec_id, $result[$i]->sec_id);
+              array_push($sec_desc, $result[$i]->sec_desc);
+          }
+          return array_combine($sec_id, $sec_desc);
+      }
+     }
+
 
           
   

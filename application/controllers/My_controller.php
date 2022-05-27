@@ -8,8 +8,10 @@ class My_controller extends CI_Controller {
       $this->load->database();
       $this->load->helper('url');
       $this->load->helper('form');
+      $this->load->helper(array('form', 'url'));
       $this->load->library('session');
       $this->load->library('form_validation');
+      $this->load->model('My_model');
 
     }
 
@@ -29,10 +31,11 @@ class My_controller extends CI_Controller {
       {  
            $this->load->library('form_validation');
            $this->load->library('session'); 
-           $this->form_validation->set_rules('username', 'Username', 'required');  
-           $this->form_validation->set_rules('password', 'Password', 'required');  
+           $this->load->helper('form');
+           $this->form_validation->set_rules("username", "Username", "required|alpha");  
+           $this->form_validation->set_rules("password", "Password", "required");  
            
-           if($this->form_validation->run())  
+           if($this->form_validation->run()==true)  
            {  
                 //true  
                 $username = $this->input->post('username');  
@@ -40,7 +43,7 @@ class My_controller extends CI_Controller {
                 //model function  
                 $this->load->model('My_model');
                 if($this->My_model->can_login($username, $password))  
-                {  
+                {   
                      $session_data = array(  
                           
                           'username'     =>     $username
@@ -202,13 +205,19 @@ class My_controller extends CI_Controller {
         }
 
         public function add_year(){
-
+          $this->load->library('form_validation');
+          $this->load->library('session'); 
+          $this->load->helper('form');
+          $this->form_validation->set_rules("year_list", "year list", "required|alpha|is_unique[year_list.yr_list]");  
+          $this->form_validation->set_rules("year_sem", "year sem", "required|alpha|is_unique[year_list.yr_sem]");  
+          
           $data = array(
             'yr_list'=> $this->input->post('year_list'),
             'yr_sem'=> $this->input->post('year_sem'),
             );
             $this->My_model->add_year($data);
             redirect('year');
+
         }
 
         public function delete_year(){
@@ -269,5 +278,46 @@ class My_controller extends CI_Controller {
           }else{
             echo "something wrong";
           }
+        }
+
+        public function schedule(){
+          $data['last_name'] = $this->My_model->get_faculty();
+          $data['yr_list'] = $this->My_model->get_year();
+          $data['yr_sem'] = $this->My_model->get_sem();
+          $data['subj_code'] = $this->My_model->get_subject();
+          $data['sec_desc'] = $this->My_model->get_section();
+          $this->form_validation->set_rules('first_name', 'first_name', 'trim|required');
+          //$this->form_validation->set_rules('category', 'Category', 'callback_validate_dropdown');
+          //$this->form_validation->set_rules('author', 'Author', 'trim|required');
+          //$this->form_validation->set_rules('isbn', 'ISBN', 'trim|required');
+  
+          if ($this->form_validation->run() == FALSE)
+          {
+              // failed validation
+              $this->load->view('schedule', $data);
+             
+          }
+          else
+          {
+              // here goes your code to insert into db
+              echo "Hooray! Now write down your code to insert book details into database...";
+          }
+      }
+      
+      function validate_dropdown($str)
+      {
+          if ($str == '-CHOOSE-')
+          {
+              $this->form_validation->set_message('validate_dropdown', 'Please choose a valid %s');
+              return FALSE;
+          }
+          else
+          {
+              return TRUE;
+          }
+        
+         
+
+
         }
     }

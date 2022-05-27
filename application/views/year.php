@@ -199,6 +199,7 @@
                                     <div class="form-group">
                                         <label class="form-label" for="basic-icon-default-post">School Year</label>
                                         <input type="text" id="basic-icon-default-post" class="form-control " placeholder="Year" aria-label="Year" name="year_list" required/>
+                                        <span><?=form_error('year_list')?></span>
                                     </div>
                                     <div class="form-group">
                                     

@@ -57,6 +57,7 @@ $route['update']='My_Controller/update';
 $route['section']='My_Controller/section';
 $route['year']='My_Controller/year';
 $route['subject']='My_Controller/subject';
+$route['schedule']='My_Controller/schedule';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['(:any)'] = 'My_controller/login/$1';
