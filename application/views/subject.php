@@ -119,7 +119,7 @@
                 </li>
                 <li class=" nav-item"><a class="d-flex align-items-center" href="<?php echo base_url(); ?>My_controller/faculty"><i data-feather="users"></i><span class="menu-title text-truncate" data-i18n="Todo">Faculty List</span></a>
                 </li>
-                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="calendar"></i><span class="menu-title text-truncate" data-i18n="Calendar">Schedule</span></a>
+                <li class=" nav-item"><a class="d-flex align-items-center" href="<?php echo base_url(); ?>My_controller/schedule"><i data-feather="calendar"></i><span class="menu-title text-truncate" data-i18n="Calendar">Schedule</span></a>
                 </li>
                 
             </ul>
